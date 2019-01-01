@@ -1,4 +1,4 @@
-# Detection of Cracks on Solar Cells using Deep Convolutional Neural Networks
+# Detection of Cracks using Deep Convolutional Neural Networks
 
 ## Requirements
 
