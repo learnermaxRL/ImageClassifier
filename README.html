@@ -1,0 +1,75 @@
+<h1 id="detection-of-cracks-on-solar-cells-using-deep-convolutional-neural-networks">Detection of Cracks on Solar Cells using Deep Convolutional Neural Networks</h1>
+<h2 id="requirements">Requirements</h2>
+<p>We are using Python 3+ for this project. Also, it is recommended to run this code with available GPUs. For development, we used a nvidia GeForce GTX 1050 Ti.</p>
+<p>The following libraries are used in this project.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Library</th>
+<th align="right">Version</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>h5py</td>
+<td align="right">2.7.1</td>
+</tr>
+<tr class="even">
+<td>imutils</td>
+<td align="right">0.4.3</td>
+</tr>
+<tr class="odd">
+<td>Keras</td>
+<td align="right">2.1.1</td>
+</tr>
+<tr class="even">
+<td>matplotlib</td>
+<td align="right">2.1.1</td>
+</tr>
+<tr class="odd">
+<td>numpy</td>
+<td align="right">1.14.0</td>
+</tr>
+<tr class="even">
+<td>opencv-contrib-python</td>
+<td align="right">3.3.0.10</td>
+</tr>
+<tr class="odd">
+<td>opencv-python</td>
+<td align="right">3.3.0.10</td>
+</tr>
+<tr class="even">
+<td>scikit-image</td>
+<td align="right">0.13.0</td>
+</tr>
+<tr class="odd">
+<td>scikit-learn</td>
+<td align="right">0.19.1</td>
+</tr>
+<tr class="even">
+<td>scipy</td>
+<td align="right">1.0.0</td>
+</tr>
+<tr class="odd">
+<td>tensorflow-gpu</td>
+<td align="right">1.4.0</td>
+</tr>
+<tr class="even">
+<td>tensorflow-tensorboard</td>
+<td align="right">0.4.0rc3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage">Usage</h2>
+<p>The first step is to build the training/validation/test partitions. In order to do this, place the images in the folder <code>data/cells</code> and execute the command</p>
+<blockquote>
+<p>python3 build_partitions.py</p>
+</blockquote>
+<p>Then, use the following command to train the model. All the parameters are optional. If you want to re-train a model with warm-start initialization, use the <code>--output</code> argument to specify the path to the weights to update. This command will create the model file.</p>
+<blockquote>
+<p>python3 train.py --img-path data/partitions/ --epochs 100 --output output/models/inception.h5</p>
+</blockquote>
+<p>Then, in order to get the predictions. Use the script <code>predict.py</code>. The path to the images is specified in the argument <code>--images</code> where you can specify either a single image or a folder with a set of images. The output will be a line per image with the filename and the probabilistic prediction. The model path is specified using the <code>--weights</code> parameter.</p>
+<blockquote>
+<p>python3 train.py --images data/imgs/ --weights output/models/inception.h5</p>
+</blockquote>
